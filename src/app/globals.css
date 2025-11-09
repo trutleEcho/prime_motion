@@ -1,26 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Archivo:wght@400;500;600;700;800&display=swap');
 @import "tailwindcss";
+@import "tw-animate-css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-neutral: var(--neutral);
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-ring: var(--ring);
+    --color-ocean: var(--ocean);
+    --color-mint: var(--mint);
+    --color-cream: var(--cream);
+    --font-sans: 'Inter', system-ui, sans-serif;
+    --font-display: 'Archivo', sans-serif;
+    --radius-sm: calc(var(--radius) - 4px);
+    --radius-md: calc(var(--radius) - 2px);
+    --radius-lg: var(--radius);
+    --radius-xl: calc(var(--radius) + 4px);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+    --radius: 1rem;
+    --background: #F6F4F2;
+    --foreground: #1a1a1a;
+    --primary: #1F6F8B;
+    --primary-foreground: #ffffff;
+    --secondary: #7FC8A9;
+    --secondary-foreground: #1a1a1a;
+    --accent: #E9F5EE;
+    --accent-foreground: #1a1a1a;
+    --muted: #E9F5EE;
+    --muted-foreground: #6b7280;
+    --neutral: #F6F4F2;
+    --border: #e5e5e5;
+    --input: #e5e5e5;
+    --ring: #1F6F8B;
+    --ocean: #1F6F8B;
+    --mint: #7FC8A9;
+    --cream: #F6F4F2;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+    * {
+        @apply border-border outline-ring/50;
+    }
+
+    body {
+        @apply bg-background text-foreground font-sans;
+        font-feature-settings: 'kern' 1, 'liga' 1;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-family: var(--font-display);
+        font-weight: 600;
+        line-height: 1.2;
+    }
+
+    .smooth-scroll {
+        overflow-x: hidden;
+    }
+}
+
+/* Hide Next.js error overlay portal */
+nextjs-portal {
+    display: none !important;
 }
